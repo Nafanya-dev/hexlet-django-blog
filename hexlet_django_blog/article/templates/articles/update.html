@@ -1,0 +1,5 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% include 'articles/form_template.html' with form=form action_url=url submit_text="Обновить" %}
+{% endblock %}

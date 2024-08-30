@@ -1,21 +1,5 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
 {% block content %}
-{% if form.errors %}
-<div>
-  <ul>
-    {% for error in form.errors %}
-    <li>{{ error|escape }}</li>
-    {% endfor %}
-  </ul>
-</div>
-{% endif %}
-
-<form action="{% url 'articles_create' %}" method="post">
-    {% csrf_token %}
-    <table border="1">
-    {{ form }}
-    </table>
-    <input type="submit" value="Создать">
-</form>
+{% include 'articles/form_template.html' with form=form action_url=url submit_text="Создать" %}
 {% endblock %}

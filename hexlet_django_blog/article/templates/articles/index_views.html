@@ -4,6 +4,11 @@
     <h1>Список статей</h1>
     {% for article in articles %}
         <a href="{% url 'article' article.id %}"><h2>{{ article.name }}</h2></a>
+        <a href="{% url 'article_edit' article.id %}">Редактировать</a>
+        <form action="{% url 'article_delete' id=article.id %}" method="post">
+            {% csrf_token %}
+            <input type="submit" value="Удалить">
+        </form>
         <div>{{ article.body|slice:":200" }}</div>
     {% endfor %}
 {% endblock %}
